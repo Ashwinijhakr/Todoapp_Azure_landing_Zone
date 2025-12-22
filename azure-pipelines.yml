@@ -33,20 +33,20 @@ stages:
             inputs:
               provider: 'azurerm'
               command: 'validate'
-              workingDirectory: 'D:\Downloaded_Software\Azure-Pipeline\ADO\Hamar_group\parent'
+              workingDirectory: 'D:\Dec_Revision_starting\infra\Azure_landing_zone\environments\dev'
           
           - task: tfsec@1
             inputs:
               version: 'v1.26.0'
               args: '--format junit,json --out tfsec-results'
-              dir: 'D:\Downloaded_Software\Azure-Pipeline\ADO\Hamar_group\parent'
+              dir: 'D:\Dec_Revision_starting\infra\Azure_landing_zone\environments\dev'
           
           - task: TerraformTask@5
             displayName: terraform plan
             inputs:
               provider: 'azurerm'
               command: 'plan'
-              workingDirectory: 'D:\Downloaded_Software\Azure-Pipeline\ADO\Hamar_group\parent'
+              workingDirectory: 'D:\Dec_Revision_starting\infra\Azure_landing_zone\environments\dev'
               environmentServiceNameAzureRM: 'Antimsangram'
 
   - stage: 
@@ -73,5 +73,5 @@ stages:
            inputs:
              provider: 'azurerm'
              command: 'apply'
-             workingDirectory: 'D:\Downloaded_Software\Azure-Pipeline\ADO\Hamar_group\parent'
+             workingDirectory: 'D:\Dec_Revision_starting\infra\Azure_landing_zone\environments\dev'
              environmentServiceNameAzureRM: 'Antimsangram'
